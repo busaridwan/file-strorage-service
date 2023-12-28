@@ -3,6 +3,7 @@ package com.busaridwan.filestorageservice.service;
 import com.busaridwan.filestorageservice.entity.FileData;
 import com.busaridwan.filestorageservice.repository.FileDataRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +16,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class FileService {
         private final FileDataRepository repository;
-        private final String FOLDER_PATH = "/Users/ridwan/Desktop/mylearning/file-storage-service/MyFiles/";
+        @Value("${file.storage.service.path}")
+        private String FOLDER_PATH;
 
 
         public String uploadImageToFileSystem(MultipartFile file) throws IOException {
